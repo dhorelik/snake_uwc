@@ -20,6 +20,9 @@ define(['snake'], function(snake) {
                 case 40:
                     if (direction !== 'up') direction = 'down';
                     break;
+                case 32:
+                    snake.togglePause();
+                    break;
                 default:
                     return;
             }

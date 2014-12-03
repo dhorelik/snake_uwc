@@ -8,14 +8,11 @@ define(['field', 'snake'], function(field, snake) {
                 .findBlocks()
                 .bindEvents();
 
-
-
         },
 
         findBlocks: function() {
 
             this.startButton = document.getElementById('start');
-            this.scoreContainer = document.getElementById('score');
 
             return this;
 
@@ -24,22 +21,31 @@ define(['field', 'snake'], function(field, snake) {
         bindEvents: function() {
 
             this.startButton.addEventListener('click', this._onStart, false);
+            document.addEventListener('gameOver', this._onEnd, false);
 
         },
 
-        _onStart: function() {
+        _onStart: function(e) {
 
-            // todo grab dynamic cellsize
-            var cellSize = 20;
+            var cellSize = 20,
+                speed = 100;
 
             ui.className = 'hidden';
 
             field.initialize(cellSize);
-            snake.initialize(cellSize);
+            snake.initialize(cellSize, speed);
+
+            e.preventDefault();
+
+        },
+
+        _onEnd: function() {
+
+            setTimeout(function() {
+                ui.className = '';
+            }, 1000);
 
         }
-
-
 
     }
 

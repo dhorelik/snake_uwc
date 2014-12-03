@@ -10,7 +10,7 @@ body
 {
     position: relative;
 
-    margin: 20px auto;
+    margin: auto;
     border: 1px solid #ccc;
 
     background: #eee;
@@ -20,14 +20,17 @@ body
 #food,
 .cell
 {
-	width: 19px;
-	height: 19px;
-
 	position: absolute;
+    box-sizing: border-box;
 
     background: #000;
     border-left: 1px solid #eee;
     border-top: 1px solid #eee;
+}
+
+#food
+{
+    background: #111;
 }
 
 #ui
@@ -41,11 +44,14 @@ body
 
     background: #fff;
     text-align: center;
+
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
 }
 
 #ui.hidden
 {
-    display: none;
+    opacity: 0;
 }
 
 #score
